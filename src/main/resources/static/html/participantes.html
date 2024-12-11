@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Participantes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Lista de Participantes</h1>
+<ul id="participantesList"></ul>
+
+<script>
+    async function fetchParticipantes() {
+        const response = await fetch('/api/participantes');
+        const participantes = await response.json();
+
+        const listElement = document.getElementById('participantesList');
+        listElement.innerHTML = '';
+        participantes.forEach(participante => {
+            const li = document.createElement('li');
+            li.textContent = `${participante.nombre} - ${participante.email}`;
+            listElement.appendChild(li);
+        });
+    }
+
+    fetchParticipantes();
+</script>
+</body>
+</html>

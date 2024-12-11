@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignaciones</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Asignación de Destinatarios</h1>
+<button id="asignarButton">Realizar Asignaciones</button>
+<p id="resultado"></p>
+
+<script>
+    document.getElementById('asignarButton').addEventListener('click', async () => {
+        const response = await fetch('/api/asignaciones', { method: 'POST' });
+        const result = await response.text();
+        document.getElementById('resultado').textContent = result;
+    });
+</script>
+</body>
+</html>
